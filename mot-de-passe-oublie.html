@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demande et réinitialisation sécurisée du mot de passe — Cours-Alygne."
+    />
+    <title>Mot de passe oublié — Cours-Alygne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      ;(() => {
+        try {
+          const saved = localStorage.getItem('cours-alygne-theme')
+          const prefersDark =
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (_e) {}
+      })()
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="mot-de-passe-oublie">
+    <a class="skip-link" href="#app-root">Aller au contenu principal</a>
+
+    <header class="topbar" role="banner">
+      <div class="topbar-inner">
+        <a href="index.html" class="brand-wordmark">Cours-Alygne</a>
+        <nav class="topbar-nav" aria-label="Navigation principale">
+          <a href="index.html" class="nav-link" data-nav="catalogue">Catalogue</a>
+          <a href="mes-cours.html" class="nav-link" data-nav="mes-cours">Mes cours</a>
+          <a href="studio.html" class="nav-link" data-nav="studio">Studio</a>
+          <a href="profil.html" class="nav-link" data-nav="profil">Profil</a>
+          <a href="admin.html" class="nav-link" data-nav="admin">Admin</a>
+        </nav>
+        <div class="topbar-actions">
+          <a href="index.html" class="btn btn-primary btn-nav-cta" id="header-auth-cta" data-nav="mot-de-passe-oublie">
+            Catalogue
+          </a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobile-menu-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-drawer"
+            aria-label="Ouvrir le menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-drawer" id="mobile-drawer" hidden>
+        <nav class="mobile-nav" aria-label="Navigation mobile">
+          <a href="index.html" class="mobile-nav-link" data-nav="catalogue">Catalogue</a>
+          <a href="mes-cours.html" class="mobile-nav-link" data-nav="mes-cours">Mes cours</a>
+          <a href="studio.html" class="mobile-nav-link" data-nav="studio">Studio</a>
+          <a href="profil.html" class="mobile-nav-link" data-nav="profil">Profil</a>
+          <a href="admin.html" class="mobile-nav-link" data-nav="admin">Admin</a>
+          <a href="connexion.html" class="mobile-nav-link mobile-nav-cta" data-nav="connexion">Connexion</a>
+          <a href="inscription.html" class="mobile-nav-link" data-nav="inscription">Inscription</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="workspace-bar" role="region" aria-label="Barre d'outils d'aperçu et thème">
+      <div class="workspace-bar-inner">
+        <div class="workspace-role-group">
+          <span class="workspace-label">Aperçu rôle</span>
+          <div class="segmented" role="group" aria-label="Simuler un rôle utilisateur">
+            <button type="button" class="segmented-btn" data-role-switch="learner">Apprenant</button>
+            <button type="button" class="segmented-btn" data-role-switch="teacher">Formateur</button>
+            <button type="button" class="segmented-btn" data-role-switch="admin">Admin</button>
+          </div>
+          <span class="workspace-session-text" id="workspace-session-label"></span>
+        </div>
+        <div class="workspace-controls">
+          <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Basculer le thème clair ou sombre">
+            <span class="theme-icon-sun" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            </span>
+            <span class="theme-icon-moon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </span>
+            <span id="theme-toggle-label">Mode sombre</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main id="app-root" class="main-container" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-wordmark">Cours-Alygne</a>
+          <p class="footer-copy">
+            Plateforme de formation en ligne, architecture modulaire et gestion sécurisée des parcours.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Catalogue</a>
+          <a href="mes-cours.html">Mes cours</a>
+          <a href="connexion.html">Connexion</a>
+          <a href="inscription.html">Inscription</a>
+          <a href="studio.html">Studio formateur</a>
+          <a href="profil.html">Profil &amp; Sessions</a>
+          <a href="admin.html">Administration</a>
+        </div>
+        <div class="footer-legal">
+          <span>© 2026 Cours-Alygne</span>
+          <span aria-hidden="true">·</span>
+          <span>Template HTML/CSS/JS prêt à intégrer</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
